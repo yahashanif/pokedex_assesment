@@ -10,6 +10,8 @@ class PokemonServices {
       {required int offset, required int limit}) async {
     final response = await http
         .get(Uri.parse('${APIkey}pokemon/?offset=$offset&limit=$limit'));
+    // Uri url = Uri.https(APIkey, 'pokemon/?offset=$offset&limit=$limit');
+    // final response = await http.get(url);
 
     if (response.statusCode == 200) {
       var result = jsonDecode(response.body);
@@ -27,6 +29,9 @@ class PokemonServices {
 
   Future<Pokemon> getPokemon({required int id}) async {
     final response = await http.get(Uri.parse('${APIkey}pokemon/$id'));
+    // Uri url = Uri.https(APIkey, 'pokemon/$id');
+
+    // final response = await http.get(url);
     print(response.body);
     if (response.statusCode == 200) {
       var result = jsonDecode(response.body);
